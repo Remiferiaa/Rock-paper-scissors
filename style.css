@@ -1,0 +1,36 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 72px;
+    margin: 24px;
+}
+
+.choices {
+    display: flex;
+    gap: 72px;
+}
+
+#playerScore,
+#compScore {
+    display: flex;
+    width: 140px;
+    height: 100px;
+    padding: 8px;
+    font-size: 18px;
+    justify-content: center;
+    background-color: red;
+    
+}
+
+button {
+    width: 200px;
+    height: 200px;
+}
