@@ -1,4 +1,3 @@
-
 function compInput() {
     function randInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -14,37 +13,51 @@ function compInput() {
 
 function gameResult(playerChoice, compChoice) {
     if (playerChoice == compChoice) {
-        return "Tie";
-    } else if ((playerChoice == "rock" && compChoice == "scissors") || (playerChoice == "paper" && compChoice == "rock") || (playerChoice == "scissors" && compChoice == "paper")) {
-        return "Win";
+        document.getElementById("result").textContent = `${playerChoice} and ${compChoice} is the same, It's a tie!`
+    } else if ((playerChoice == "rock" && compChoice == "scissors") || (playerChoice == "paper"
+        && compChoice == "rock") || (playerChoice == "scissors" && compChoice == "paper")) {
+        playerWin += 1;
+        document.getElementById("result").textContent = `${playerChoice} beats ${compChoice}, you win!`;
     } else {
-        return "Lose";
+        compWin += 1;
+        document.getElementById("result").textContent = `${compChoice} beats ${playerChoice}, you lose!`;
     }
 }
 
 function playGame() {
-    compWin = 0;
-    playerWin = 0;
-    for (let i = 1; i <= 5; i++) {
-        let playerInput = prompt("Please input your choice for the Rock Paper Scissors game");
-        let playerChoice = playerInput.toLowerCase();
-        let compChoice = compInput();
-        if (!(playerChoice == "rock" || playerChoice == "scissors" || playerChoice == "paper")) {
-            break;
-        } else {
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => {
+        button.addEventListener('click', function () {
+            const playerChoice = button.textContent.toLowerCase();
+            const compChoice = compInput();
+            console.log(compChoice);
+            document.getElementById("endscore").textContent = "";
+            document.getElementById("compScore").textContent = `Current Score:\n ${compWin}`;
             gameResult(playerChoice, compChoice);
-            if (gameResult(playerChoice, compChoice) == "Win") {
-                playerWin += 1;
-                console.log(`${playerChoice} beats ${compChoice}, you win!`);
-            } else if (gameResult(playerChoice, compChoice) == "Tie") {
-                console.log(`${playerChoice} and ${compChoice} is the same, It's a tie!`);
-            } else {
-                compWin += 1;
-                console.log(`${compChoice} beats ${playerChoice}, you lose!`);
+            if (playerWin >= 5) {
+                document.getElementById("endscore").textContent = `You win with the endscore of ${playerWin} to ${compWin}`;
+                playerWin = 0;
+                compWin = 0;
+            } else if (compWin >= 5) {
+                document.getElementById("endscore").textContent = `Computer wins with the endscore of ${compWin} to ${playerWin}`;
+                playerWin = 0;
+                compWin = 0;
             }
-        }
-    }
-    console.log(`Score at the end of 5 games is ${playerWin} to ${compWin}`)
+        });
+    });
 }
 
+let playerWin = 0;
+let compWin = 0;
 playGame()
+
+
+
+
+
+
+
+
+
+
+// add button event listener to each button, when button is clicked return the textcontent of the button, send that to playgame function, display result //
