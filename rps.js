@@ -27,6 +27,10 @@ function gameResult(playerChoice, compChoice) {
 }
 
 function playGame() {
+    playerWin = 0;
+    compWin = 0;
+    document.getElementById("compScore").textContent = `${compWin}`;
+    document.getElementById("playerScore").textContent = `${playerWin}`;
     const buttons = document.querySelectorAll("button");
     buttons.forEach((button) => {
         button.addEventListener('click', function () {
@@ -35,7 +39,6 @@ function playGame() {
             document.getElementById("endscore").textContent = "";
             document.getElementById("compScore").textContent = `${compWin}`;
             document.getElementById("playerScore").textContent = `${playerWin}`;
-            console.log(compChoice)
             gameResult(playerChoice, compChoice);
             if (playerWin >= 5) {
                 document.getElementById("endscore").textContent = `You win with the endscore of ${playerWin} to ${compWin}`;
@@ -51,8 +54,8 @@ function playGame() {
 }
 
 
-let playerWin = 0;
-let compWin = 0;
+let playerWin;
+let compWin;
 playGame()
 
 
