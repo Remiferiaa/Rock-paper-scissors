@@ -16,10 +16,12 @@ function gameResult(playerChoice, compChoice) {
         document.getElementById("result").textContent = `${playerChoice} and ${compChoice} is the same, It's a tie!`
     } else if ((playerChoice == "rock" && compChoice == "scissors") || (playerChoice == "paper"
         && compChoice == "rock") || (playerChoice == "scissors" && compChoice == "paper")) {
-        playerWin += 1;
+        playerWin += 1; 
+        document.getElementById("playerScore").textContent = `${playerWin}`;
         document.getElementById("result").textContent = `${playerChoice} beats ${compChoice}, you win!`;
     } else {
         compWin += 1;
+        document.getElementById("compScore").textContent = `${compWin}`;
         document.getElementById("result").textContent = `${compChoice} beats ${playerChoice}, you lose!`;
     }
 }
@@ -28,11 +30,12 @@ function playGame() {
     const buttons = document.querySelectorAll("button");
     buttons.forEach((button) => {
         button.addEventListener('click', function () {
-            const playerChoice = button.textContent.toLowerCase();
+            const playerChoice = button.id;
             const compChoice = compInput();
-            console.log(compChoice);
             document.getElementById("endscore").textContent = "";
-            document.getElementById("compScore").textContent = `Current Score:\n ${compWin}`;
+            document.getElementById("compScore").textContent = `${compWin}`;
+            document.getElementById("playerScore").textContent = `${playerWin}`;
+            console.log(compChoice)
             gameResult(playerChoice, compChoice);
             if (playerWin >= 5) {
                 document.getElementById("endscore").textContent = `You win with the endscore of ${playerWin} to ${compWin}`;
@@ -47,6 +50,7 @@ function playGame() {
     });
 }
 
+
 let playerWin = 0;
 let compWin = 0;
 playGame()
@@ -60,4 +64,4 @@ playGame()
 
 
 
-// add button event listener to each button, when button is clicked return the textcontent of the button, send that to playgame function, display result //
+

@@ -3,14 +3,17 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background-color: black;
+    color: white;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    gap: 36px;
 }
 
 .main {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     gap: 72px;
-    margin: 24px;
+    margin: 24px;  
 }
 
 .choices {
@@ -18,19 +21,44 @@ body {
     gap: 72px;
 }
 
-#playerScore,
-#compScore {
+.score {
     display: flex;
+    flex-direction: column;
     width: 140px;
-    height: 100px;
+    height: 150px;
     padding: 8px;
     font-size: 18px;
-    justify-content: center;
-    background-color: red;
+    justify-content: space-between;
+    align-items: center;
+
+
+}
+
+h3 {
+    display: flex;
+    border-color: white;
+    border-style: dotted;
+    width: 300px;
+    height: 50px;
+    align-items: center;
+    margin: 0px, 0px, 8px, 0px;
+    padding: 8px;
     
 }
 
-button {
+button { 
+    width: 200px;
+    height: 200px;  
+    margin: 0px 0px 100px 0px;
+    padding: 0px;
+    border: none;
+    
+}
+
+button img {
+    object-fit: cover;
     width: 200px;
     height: 200px;
+    object-position: top;
+   
 }
